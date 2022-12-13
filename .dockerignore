@@ -16,3 +16,17 @@ k8s
 
 README.md
 pull_request_template.md
+
+node_modules
+.git
+
+**/node_modules
+**/dist
+**/.next
+
+# Docker volumes
+docker/postgres
+docker/redis
+docker/data
+
+README.md

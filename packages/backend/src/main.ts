@@ -2,6 +2,7 @@ import '@env';
 
 import path from 'path';
 
+import { json, urlencoded } from 'express';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { generateApi } from 'swagger-typescript-api';
 import { Logger, ValidationPipe } from '@nestjs/common';
@@ -12,7 +13,6 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import systemConfig from '@core/config/system';
 
 import { AppModule } from './app.module';
-import { json, urlencoded } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {

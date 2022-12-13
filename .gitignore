@@ -44,3 +44,7 @@ package-lock.json
 
 # vscode
 .vscode
+
+# Docker volumes
+docker/data
+docker/postgres

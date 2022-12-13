@@ -1,6 +1,8 @@
-import { loggerOptions } from '@core/config/winston';
-import { Module } from '@nestjs/common';
 import { WinstonModule } from 'nest-winston';
+import { Module } from '@nestjs/common';
+
+import { loggerOptions } from '@core/config/winston';
+
 import { LoggerService } from './logger.service';
 
 @Module({

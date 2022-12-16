@@ -9,6 +9,18 @@
  * ---------------------------------------------------------------
  */
 
+export enum TeamType {
+  Blockchain = 'Blockchain',
+  QA = 'QA',
+  Game = 'Game',
+  Design = 'Design',
+}
+
+export interface AddTaskDto {
+  team: TeamType;
+  description: string;
+}
+
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, ResponseType } from 'axios';
 
 export type QueryParamsType = Record<string | number, any>;
@@ -153,14 +165,30 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
-     * @tags order
-     * @name OrderControllerGetAllItems
-     * @request GET:/api/order/items
+     * @tags task-manager
+     * @name TaskManagerControllerGetAllTasks
+     * @request GET:/api/task-manager/tasks
      */
-    orderControllerGetAllItems: (params: RequestParams = {}) =>
+    taskManagerControllerGetAllTasks: (params: RequestParams = {}) =>
       this.request<void, any>({
-        path: `/api/order/items`,
+        path: `/api/task-manager/tasks`,
         method: 'GET',
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags task-manager
+     * @name TaskManagerControllerAddTask
+     * @request POST:/api/task-manager/add-task
+     */
+    taskManagerControllerAddTask: (data: AddTaskDto, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/task-manager/add-task`,
+        method: 'POST',
+        body: data,
+        type: ContentType.Json,
         ...params,
       }),
   };

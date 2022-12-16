@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import LoggerModule, { RequestLogginMiddleware } from '@modules/logger';
-import OrderModule from '@modules/order';
+import TaskManagerModule from '@modules/task-manager';
 
 import { dataSourceOptions } from './settings/typeorm';
 
@@ -12,7 +12,7 @@ import { dataSourceOptions } from './settings/typeorm';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(dataSourceOptions),
     LoggerModule,
-    OrderModule,
+    TaskManagerModule,
   ],
 })
 export class AppModule implements NestModule {

@@ -1,4 +1,5 @@
 import winston from 'winston';
+
 import systemConfig from './system';
 
 const { format } = winston;

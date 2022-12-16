@@ -6,8 +6,20 @@ export enum ConfigKey {
 
 @Injectable()
 export class SystemConfigProvider {
+  POSTGRES_SYNCHRONIZE = this.getEnv("POSTGRES_SYNCHRONIZE", "false");
+  
+  public getPostgresUrl() {
+    return this.isTest
+      ? this.getEnv('POSTGRES_TEST_URL')
+      : this.getEnv('POSTGRES_URL');
+  }
+
+  public getRedisUrl() {
+    return this.getEnv('REDIS_URL');
+  }
+
   public get isProduction() {
-    return this.getEnv('NODE_ENV', 'developmen') === 'production';
+    return this.getEnv('NODE_ENV', 'development') === 'production';
   }
 
   public get isTest() {

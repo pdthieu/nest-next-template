@@ -48,3 +48,4 @@ package-lock.json
 # Docker volumes
 docker/data
 docker/postgres
+docker/redis

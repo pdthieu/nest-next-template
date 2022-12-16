@@ -1,8 +1,8 @@
-import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 import dayjs from 'dayjs';
 import { NextFunction, Request, Response } from 'express';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 
 @Injectable()
 export class RequestLogginMiddleware implements NestMiddleware {

@@ -7,18 +7,21 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class UserEntity {
+export class ItemEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: String })
+  @Column({ type: 'character varying' })
   name: string;
 
-  @Column({ type: String })
+  @Column({ type: 'character varying' })
   descrition: string;
 
-  @Column({ type: Number })
+  @Column({ type: 'int' })
   quantity: number;
+
+  @Column({ type: 'int' })
+  cost: number;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;

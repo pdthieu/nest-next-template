@@ -2,12 +2,15 @@ import { Injectable } from '@nestjs/common';
 
 export enum ConfigKey {
   REDIS_ENDPOINT = 'REDIS_ENDPOINT',
+  POSTGRES_SYNCHRONIZE = 'POSTGRES_SYNCHRONIZE',
 }
 
 @Injectable()
 export class SystemConfigProvider {
-  POSTGRES_SYNCHRONIZE = this.getEnv("POSTGRES_SYNCHRONIZE", "false");
-  
+  public get postgresSynchronize() {
+    return this.getEnv(ConfigKey.POSTGRES_SYNCHRONIZE, 'false');
+  }
+
   public getPostgresUrl() {
     return this.isTest
       ? this.getEnv('POSTGRES_TEST_URL')

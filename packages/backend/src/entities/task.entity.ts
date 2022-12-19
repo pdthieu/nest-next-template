@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum, IsNumber, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { IsNumber, IsString, IsEnum } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export enum TeamType {
   Blockchain = 'Blockchain',

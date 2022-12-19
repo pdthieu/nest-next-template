@@ -1,4 +1,5 @@
 import fs from 'fs';
+
 import { dataSourceOptions } from 'src/settings/typeorm';
 
 const writeTypeOrmConfig = async () =>

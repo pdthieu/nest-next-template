@@ -21,6 +21,12 @@ export interface AddTaskDto {
   description: string;
 }
 
+export interface UpdateTaskDto {
+  id: number;
+  team: TeamType;
+  description: string;
+}
+
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, ResponseType } from 'axios';
 
 export type QueryParamsType = Record<string | number, any>;
@@ -180,15 +186,45 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags task-manager
-     * @name TaskManagerControllerAddTask
-     * @request POST:/api/task-manager/add-task
+     * @name TaskManagerControllerCreateTask
+     * @request POST:/api/task-manager/create
      */
-    taskManagerControllerAddTask: (data: AddTaskDto, params: RequestParams = {}) =>
+    taskManagerControllerCreateTask: (data: AddTaskDto, params: RequestParams = {}) =>
       this.request<void, any>({
-        path: `/api/task-manager/add-task`,
+        path: `/api/task-manager/create`,
         method: 'POST',
         body: data,
         type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags task-manager
+     * @name TaskManagerControllerUpdateTask
+     * @request PUT:/api/task-manager/update
+     */
+    taskManagerControllerUpdateTask: (data: UpdateTaskDto, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/task-manager/update`,
+        method: 'PUT',
+        body: data,
+        type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags task-manager
+     * @name TaskManagerControllerDeleteTask
+     * @request DELETE:/api/task-manager/delete/{id}
+     */
+    taskManagerControllerDeleteTask: (id: number, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/task-manager/delete/${id}`,
+        method: 'DELETE',
         ...params,
       }),
   };

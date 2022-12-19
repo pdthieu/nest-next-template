@@ -16,7 +16,7 @@ export const dataSourceOptions: DataSourceOptions = {
   entities: [join(__dirname, '..', '**', '*.entity{.ts,.js}')],
   migrationsTableName: 'migrations',
   migrations: [join(__dirname, '..', 'migrations', '*{.ts,.js}')],
-  synchronize: systemConfig.POSTGRES_SYNCHRONIZE === 'true',
+  synchronize: systemConfig.postgresSynchronize === 'true',
   logging: !!systemConfig.isDebugging,
   // // redis doesn't support current version typeorm
   // cache: {

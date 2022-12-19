@@ -1,7 +1,17 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+
 import { TaskEntity } from 'src/entities/task.entity';
-import { AddTaskDto } from './task-manager.dto';
+
+import { AddTaskDto, UpdateTaskDto } from './task-manager.dto';
 import { TaskManagerService } from './task-manager.service';
 
 @ApiTags('task-manager')
@@ -17,5 +27,15 @@ export class TaskManagerController {
   @Post('/create')
   async createTask(@Body() body: AddTaskDto): Promise<TaskEntity> {
     return this.taskManagerSrv.createTask(body);
+  }
+
+  @Put('/update')
+  async updateTask(@Body() body: UpdateTaskDto): Promise<void> {
+    return this.taskManagerSrv.updateTask(body);
+  }
+
+  @Delete('/delete/:id')
+  async deleteTask(@Param('id') id: number) {
+    return this.taskManagerSrv.deleteTask(id);
   }
 }

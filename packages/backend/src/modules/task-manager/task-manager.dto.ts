@@ -1,6 +1,6 @@
-import { IsEnum, IsString } from 'class-validator';
-
+import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
 import { TaskEntity, TeamType } from 'src/entities/task.entity';
 
 export class AddTaskDto {
@@ -13,6 +13,21 @@ export class AddTaskDto {
   description: string;
 }
 
+export class UpdateTaskDto {
+  @ApiProperty({ type: Number })
+  @IsNumber()
+  id: number;
+
+  @ApiProperty({ type: String, enum: TeamType, enumName: 'TeamType' })
+  @IsEnum(TeamType)
+  @IsOptional()
+  team?: TeamType;
+
+  @ApiProperty({ type: String })
+  @IsString()
+  @IsOptional()
+  description?: string;
+}
 export class TasksResponseDto {
   @ApiProperty({ type: Number })
   totalCount: number;

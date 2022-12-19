@@ -6,8 +6,8 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345678
       - POSTGRES_DB=nest_next_template
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
@@ -27,4 +27,4 @@ services:
     volumes:
       - ./redis/data:/data
     ports:
-      - 16379:6379
+      - 26379:6379

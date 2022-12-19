@@ -1,4 +1,5 @@
 import '@env';
+import '@settings/typeorm-query';
 
 import path from 'path';
 

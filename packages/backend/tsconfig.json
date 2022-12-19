@@ -11,9 +11,11 @@
       "@env": ["src/env"],
       "@core/*": ["src/core/*"],
       "@models/*": ["src/models/*"],
-      "@entity/*": ["src/entity/*"],
+      "@entities/*": ["src/entities/*"],
       "@modules/*": ["src/modules/*"],
       "@utils/*": ["src/utils/*"],
+      "@settings/*": ["src/settings/*"],
+      "@scripts/*": ["src/scripts/*"]
     },
     "typeRoots": ["node_modules/@types", "../../node_modules/@types"]
   },

@@ -6,7 +6,8 @@
   "description": "Hieuphan template",
   "scripts": {
     "backend": " yarn workspace @project-template/backend",
-    "frontend": " yarn workspace @project-template/frontend"
+    "frontend": " yarn workspace @project-template/frontend",
+    "docker:local": "docker-compose -f docker/docker-compose.yml"
   },
   "workspaces": {
     "packages": [
@@ -18,7 +19,7 @@
     ]
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.36",
+    "@types/bluebird": "^3.5.32",
     "@types/lodash": "^4.14.178",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.0",

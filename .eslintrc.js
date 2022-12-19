@@ -60,6 +60,8 @@ module.exports = {
               '@core',
               '@models',
               '@modules',
+              '@entities',
+              '@settings',
               'src',
               'public',
             ].join('|')})(/.*|$)`,

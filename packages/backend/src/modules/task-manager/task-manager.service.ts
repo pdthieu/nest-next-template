@@ -1,5 +1,9 @@
 import { DataSource, Repository } from 'typeorm';
-import { Injectable, InternalServerErrorException, BadRequestException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import {

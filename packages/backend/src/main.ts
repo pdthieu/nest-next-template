@@ -4,7 +4,7 @@ import '@settings/typeorm-query';
 import path from 'path';
 
 import { json, urlencoded } from 'express';
-import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
+import { WINSTON_MODULE_NEST_PROVIDER, WinstonModule } from 'nest-winston';
 import { generateApi } from 'swagger-typescript-api';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
@@ -13,11 +13,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import systemConfig from '@core/config/system';
 
+import { loggerOptions } from './core/config/winston';
 import { AppModule } from './app.module';
+import { ExceptionFilter } from './exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
+    logger: WinstonModule.createLogger(loggerOptions),
   });
 
   app.setGlobalPrefix('api');
@@ -42,6 +45,8 @@ async function bootstrap() {
 
   // trust proxy headers
   app.set('trust proxy', 1);
+
+  app.useGlobalFilters(new ExceptionFilter());
 
   // enable swagger
   if (systemConfig.enableSwagger) {

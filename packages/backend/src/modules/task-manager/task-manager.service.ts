@@ -1,5 +1,5 @@
-import { Repository } from 'typeorm';
-import { Injectable } from '@nestjs/common';
+import { DataSource, Repository } from 'typeorm';
+import { Injectable, InternalServerErrorException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import {
@@ -11,12 +11,14 @@ import { TaskEntity, TeamType } from 'src/entities/task.entity';
 import {
   AddTaskDto,
   TasksResponseDto,
+  TestTaskDto,
   UpdateTaskDto,
 } from './task-manager.dto';
 
 @Injectable()
 export class TaskManagerService {
   constructor(
+    private dataSource: DataSource,
     @InjectRepository(TaskEntity) private taskRepo: Repository<TaskEntity>,
   ) {}
 
@@ -66,5 +68,31 @@ export class TaskManagerService {
     }
 
     return this.taskRepo.delete({ id });
+  }
+
+  async test(input: TestTaskDto) {
+    throw new BadRequestException('error');
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      await queryRunner.manager.update(TaskEntity, input.id, {
+        description: input.description,
+      });
+
+      await this.taskRepo
+        .createQueryBuilder('task', queryRunner)
+        .update(TaskEntity)
+        .set({ team: input.team })
+        .where('id = :id', { id: input.id })
+        .execute();
+
+      await queryRunner.commitTransaction();
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+      throw new InternalServerErrorException();
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

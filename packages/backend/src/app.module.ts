@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import LoggerModule, { RequestLogginMiddleware } from '@modules/logger';
+import LoggerModule, { RequestLoggerMiddleware } from '@modules/logger';
 import TaskManagerModule from '@modules/task-manager';
 
 import { dataSourceOptions } from './settings/typeorm';
@@ -17,6 +17,6 @@ import { dataSourceOptions } from './settings/typeorm';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RequestLogginMiddleware).forRoutes('*');
+    consumer.apply(RequestLoggerMiddleware).forRoutes('*');
   }
 }

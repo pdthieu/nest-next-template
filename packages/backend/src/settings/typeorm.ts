@@ -7,9 +7,6 @@ import systemConfig from '@core/config/system';
 
 dotenv.config();
 
-console.log(systemConfig.getPostgresUrl());
-console.log(systemConfig.getRedisUrl());
-
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   url: systemConfig.getPostgresUrl(),

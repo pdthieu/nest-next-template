@@ -27,6 +27,12 @@ export interface UpdateTaskDto {
   description: string;
 }
 
+export interface TestTaskDto {
+  id: number;
+  team: TeamType;
+  description: string;
+}
+
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, ResponseType } from 'axios';
 
 export type QueryParamsType = Record<string | number, any>;
@@ -225,6 +231,22 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       this.request<void, any>({
         path: `/api/task-manager/delete/${id}`,
         method: 'DELETE',
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags task-manager
+     * @name TaskManagerControllerTest
+     * @request POST:/api/task-manager/test
+     */
+    taskManagerControllerTest: (data: TestTaskDto, params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/api/task-manager/test`,
+        method: 'POST',
+        body: data,
+        type: ContentType.Json,
         ...params,
       }),
   };

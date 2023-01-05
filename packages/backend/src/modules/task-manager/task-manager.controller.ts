@@ -11,7 +11,7 @@ import { ApiTags } from '@nestjs/swagger';
 
 import { TaskEntity } from 'src/entities/task.entity';
 
-import { AddTaskDto, UpdateTaskDto } from './task-manager.dto';
+import { AddTaskDto, UpdateTaskDto, TestTaskDto } from './task-manager.dto';
 import { TaskManagerService } from './task-manager.service';
 
 @ApiTags('task-manager')
@@ -37,5 +37,10 @@ export class TaskManagerController {
   @Delete('/delete/:id')
   async deleteTask(@Param('id') id: number) {
     return this.taskManagerSrv.deleteTask(id);
+  }
+
+  @Post('/test')
+  async test(@Body() body: TestTaskDto) {
+    return this.taskManagerSrv.test(body);
   }
 }

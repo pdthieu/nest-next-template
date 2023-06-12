@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'sudope-gray': 'rgba(18, 18, 18, 0.05)',
+        'sudope-red': '#C1121F',
+        'sudope-red-1': '#FC5555',
+        'sudope-purple': '#7141F0',
+        'sudope-orange': '#EC2D2B',
+        'sudope-yellow-1': '#F2CA6F',
+        'sudope-yellow-2': '#DB9F5F',
+        'sudope-black-1': '#222222',
+        'sudope-red-2': '#FFEBEA',
+        'sudope-secondary-10': '#E8E8E8',
+        'sudope-secondary-30': '#C4C4C4',
+        'sudope-secondary-40': '#A1A1A1',
+        'sudope-secondary-50': '#7F7F7F',
+        'sudope-secondary-60': '#5C5C5C',
+        'sudope-secondary-70': '#333333',
+        'sudope-secondary-80': '#242424',
+        'sudope-secondary-90': '#111111',
+        current: 'currentColor',
+        whiteAlpha: {
+          50: 'rgba(255, 255, 255, 0.04)',
+          100: 'rgba(255, 255, 255, 0.06)',
+          200: 'rgba(255, 255, 255, 0.08)',
+          300: 'rgba(255, 255, 255, 0.16)',
+          400: 'rgba(255, 255, 255, 0.24)',
+          500: 'rgba(255, 255, 255, 0.36)',
+          600: 'rgba(255, 255, 255, 0.48)',
+          700: 'rgba(255, 255, 255, 0.64)',
+          800: 'rgba(255, 255, 255, 0.80)',
+          900: 'rgba(255, 255, 255, 0.92)',
+        },
+        blackAlpha: {
+          50: 'rgba(0, 0, 0, 0.04)',
+          100: 'rgba(0, 0, 0, 0.06)',
+          200: 'rgba(0, 0, 0, 0.08)',
+          300: 'rgba(0, 0, 0, 0.16)',
+          400: 'rgba(0, 0, 0, 0.24)',
+          500: 'rgba(0, 0, 0, 0.36)',
+          600: 'rgba(0, 0, 0, 0.48)',
+          700: 'rgba(0, 0, 0, 0.64)',
+          800: 'rgba(0, 0, 0, 0.80)',
+          900: 'rgba(0, 0, 0, 0.92)',
+        },
+      },
+      backgroundImage: {
+        'sudope-home': "url('/images/home-background.png')",
+        'sudope-button-1': "url('/images/gacha/button.png')",
+        'sudope-button-2': "url('/images/gacha/button2.png')",
+      },
+      flex: {
+        2: '2 2 0%',
+      },
+    },
+    fontFamily: {
+      montserrat: ['Montserrat', 'sans-serif'],
+    },
+  },
+  plugins: [require('@tailwindcss/line-clamp')],
+};

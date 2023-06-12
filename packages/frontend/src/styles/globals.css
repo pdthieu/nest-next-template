@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #111111;
+}
+
+span.placeholder {
+  color: gray;
+}
+input:focus + span.placeholder,
+input:valid + span.placeholder {
+  display: none;
+}
+
+@layer base {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+/* For animation class */
+
+@keyframes animate-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animate-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.box-saw {
+  --mask: radial-gradient(4.66px at 50% 6.4px, #000 99%, #0000 101%) calc(50% - 8px) 0/16px 100%,
+    radial-gradient(4.66px at 50% -2.4px, #0000 99%, #000 101%) 50% 4px/16px 100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+.remove-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .joy-machine {
+    zoom: 0.6;
+  }
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.3rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (min-width: 480px) {
+  *::-webkit-scrollbar {
+    height: 0.5rem;
+  }
+}

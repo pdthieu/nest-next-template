@@ -11,7 +11,7 @@ import { ApiTags } from '@nestjs/swagger';
 
 import { TaskEntity } from 'src/entities/task.entity';
 
-import { AddTaskDto, UpdateTaskDto, TestTaskDto } from './task-manager.dto';
+import { AddTaskDto, TestTaskDto, UpdateTaskDto } from './task-manager.dto';
 import { TaskManagerService } from './task-manager.service';
 
 @ApiTags('task-manager')

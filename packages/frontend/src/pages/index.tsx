@@ -1,13 +1,9 @@
 import type { NextPage } from 'next';
 
-import { Metadata } from '@components/shared';
-import { HomeScreen } from '@components/ui';
-
 const Home: NextPage = () => {
   return (
     <>
-      <Metadata title="Sudope" />
-      <HomeScreen />
+      <h1 className="text-2xl text-green-500">Hello world</h1>
     </>
   );
 };

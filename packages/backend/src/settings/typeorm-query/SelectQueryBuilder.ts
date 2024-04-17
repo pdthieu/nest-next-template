@@ -5,7 +5,7 @@ import {
   WhereExpressionBuilder,
 } from 'typeorm';
 
-declare module 'typeorm/query-builder/SelectQueryBuilder' {
+declare module 'typeorm' {
   interface SelectQueryBuilder<Entity> {
     /** Run callback when condition is true */
     when(

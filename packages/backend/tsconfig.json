@@ -29,7 +29,5 @@
       "@settings/*": ["src/settings/*"],
       "@scripts/*": ["src/scripts/*"]
     }
-  },
-  "include": ["./src/**/*.ts", "./test/**/*"],
-  "exclude": ["node_modules"]
+  }
 }

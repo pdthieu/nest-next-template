@@ -1,6 +1,6 @@
 import { ObjectLiteral } from 'typeorm';
 
-declare module 'typeorm/query-builder/WhereExpressionBuilder' {
+declare module 'typeorm' {
   interface WhereExpressionBuilder {
     /** Run callback when condition is true */
     when(

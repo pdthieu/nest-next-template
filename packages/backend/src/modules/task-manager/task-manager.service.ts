@@ -1,8 +1,7 @@
-import { DataSource, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import {
   BadRequestException,
   Injectable,
-  InternalServerErrorException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -22,7 +21,6 @@ import {
 @Injectable()
 export class TaskManagerService {
   constructor(
-    private dataSource: DataSource,
     @InjectRepository(TaskEntity) private taskRepo: Repository<TaskEntity>,
   ) {}
 
@@ -76,27 +74,5 @@ export class TaskManagerService {
 
   async test(input: TestTaskDto) {
     throw new BadRequestException('error');
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    try {
-      await queryRunner.manager.update(TaskEntity, input.id, {
-        description: input.description,
-      });
-
-      await this.taskRepo
-        .createQueryBuilder('task', queryRunner)
-        .update(TaskEntity)
-        .set({ team: input.team })
-        .where('id = :id', { id: input.id })
-        .execute();
-
-      await queryRunner.commitTransaction();
-    } catch (err) {
-      await queryRunner.rollbackTransaction();
-      throw new InternalServerErrorException();
-    } finally {
-      await queryRunner.release();
-    }
   }
 }

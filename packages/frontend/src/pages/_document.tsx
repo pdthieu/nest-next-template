@@ -1,4 +1,4 @@
-import { Head, Html, Main, NextScript } from 'next/document';
+import { Head, Html, Main, NextScript } from "next/document"
 
 export default function Document() {
   return (
@@ -6,7 +6,7 @@ export default function Document() {
       lang="en"
       className="dark bg-black"
       style={{
-        backgroundColor: '#F4F5F7',
+        backgroundColor: "#F4F5F7",
       }}
     >
       <Head>
@@ -17,10 +17,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
         {/* <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -43,5 +40,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }

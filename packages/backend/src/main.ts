@@ -26,7 +26,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   // increase body limit
-  app.use(json({ limit: '5mb' }));
+  app.use(json({ limit: '100mb' }));
   app.use(urlencoded({ extended: true, limit: '5mb' }));
 
   // validation
@@ -57,7 +57,14 @@ async function bootstrap() {
       .build();
 
     const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup('api', app, document);
+    SwaggerModule.setup('api', app, document, {
+      swaggerOptions: {
+        persistAuthorization: true,
+        defaultModelsExpandDepth: -1, // no models shown
+        defaultModelExpandDepth: -1, // no model properties shown,
+        syntaxHighlight: false,
+      },
+    });
 
     // generate typescript api
     if (!systemConfig.isDebugging) {
@@ -65,7 +72,6 @@ async function bootstrap() {
         name: 'sdk',
         output: path.resolve(__dirname, '../../frontend/src/api'),
         spec: document as any,
-        templates: path.resolve(__dirname, '../src/swagger-templates'),
         prettier: {
           singleQuote: true,
           jsxSingleQuote: false,
@@ -74,6 +80,7 @@ async function bootstrap() {
           tabWidth: 2,
           printWidth: 100,
           parser: 'typescript',
+          unwrapResponseData: true,
         },
         httpClientType: 'axios',
       });
